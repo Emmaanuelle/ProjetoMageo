@@ -1,0 +1,23 @@
+'use strict'
+
+/** @type {import('@adonisjs/lucid/src/Schema')} */
+const Schema = use('Schema')
+
+class RankingSchema extends Schema {
+  up () {
+    this.create('rankings', (table) => {
+      table.increments()
+      table.integer('pontos').notNullable()
+      table.integer('user_id').references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE') //chave estrageira
+      table.integer('questaos_id').references('id').inTable('questaos').onUpdate('CASCADE').onDelete('CASCADE') // chave estrageira
+
+      table.timestamps()
+    })
+  }
+
+  down () {
+    this.drop('rankings')
+  }
+}
+
+module.exports = RankingSchema
