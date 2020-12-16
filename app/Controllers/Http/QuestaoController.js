@@ -22,7 +22,11 @@ class QuestaoController {
    * @param {View} ctx.view
    */
   async index({ request, response, view }) {
-  }
+    const questao = await Questao.all()
+    return questao
+}
+
+  
 
   /**
    * Render a form to be used for creating a new questao.
@@ -54,8 +58,8 @@ class QuestaoController {
 
 
   ])
-  const ranking = await Ranking.create(data)
-  return ranking
+  const questao = await Questao.create(data)
+  return questao
   
 
 
