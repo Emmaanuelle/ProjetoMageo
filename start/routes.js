@@ -22,9 +22,9 @@ Route.get('/user', 'UserController.index').middleware('auth:jwt')               
 Route.post('/user', 'UserController.store')                              // cadastro, envio dos dados
 Route.put('/user/:id','UserController.update').middleware('auth:jwt')    // editar os dados
 
-Route.get('/questao', 'QuestaoController.index').middleware('auth:jwt')
-Route.post('/questao', 'QuestaoController.store').middleware('auth:jwt')
-Route.put('/questao/:id', 'QuestaoController.update').middleware('auth:jwt')
+Route.get('/questao', 'QuestionController.index').middleware('auth:jwt')
+Route.post('/questao', 'QuestionController.store').middleware('auth:jwt')
+Route.put('/questao/:id', 'QuestionController.update').middleware('auth:jwt')
 
 Route.get('/ranking', 'RankingController.index').middleware('auth:jwt')
 Route.post('/ranking', 'RankingController.store').middleware('auth:jwt')

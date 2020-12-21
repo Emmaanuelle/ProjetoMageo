@@ -9,12 +9,12 @@ const Database = use('Database');
 /** @typedef {import('@adonisjs/framework/src/View')} View */
 
 /**
- * Resourceful controller for interacting with questaos
+ * Resourceful controller for interacting with questoes
  */
 class QuestaoController {
   /**
-   * Show a list of all questaos.
-   * GET questaos
+   * Show a list of all questoes.
+   * GET questoes
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -30,7 +30,7 @@ class QuestaoController {
 
   /**
    * Render a form to be used for creating a new questao.
-   * GET questaos/create
+   * GET questoes/create
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -42,7 +42,7 @@ class QuestaoController {
 
   /**
    * Create/save a new questao.
-   * POST questaos
+   * POST questoes
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -67,7 +67,7 @@ class QuestaoController {
 
   /**
    * Display a single questao.
-   * GET questaos/:id
+   * GET questoes/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -79,7 +79,7 @@ class QuestaoController {
 
   /**
    * Render a form to update an existing questao.
-   * GET questaos/:id/edit
+   * GET questoes/:id/edit
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -91,7 +91,7 @@ class QuestaoController {
 
   /**
    * Update questao details.
-   * PUT or PATCH questaos/:id
+   * PUT or PATCH questoes/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
@@ -120,7 +120,7 @@ class QuestaoController {
 
   /**
    * Delete a questao with id.
-   * DELETE questaos/:id
+   * DELETE questoes/:id
    *
    * @param {object} ctx
    * @param {Request} ctx.request
