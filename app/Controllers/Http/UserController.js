@@ -36,5 +36,13 @@ class UserController {
 
     }
 
+    async login({request,auth}){
+
+        const{email,senha} = request.all();
+        const token = await auth.attempt(email, senha);
+        return token;
+
+    }
+
 }
 module.exports = UserController

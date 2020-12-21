@@ -18,12 +18,18 @@ const Route = use('Route')
 Route.get('/', () => {
   return { greeting: 'Hello world in JSON' }
 })
-Route.get('/user', 'UserController.index') // rota de listagem dos usuarios com o /user, class usercontroller, index listagem dos dados
-Route.post('/user', 'UserController.store') // cadastro, envio dos dados
-Route.put('/user/:id','UserController.update') // editar os dados
+Route.get('/user', 'UserController.index').middleware('auth:jwt')                           // rota de listagem dos usuarios com o /user, class usercontroller, index listagem dos dados
+Route.post('/user', 'UserController.store')                              // cadastro, envio dos dados
+Route.put('/user/:id','UserController.update').middleware('auth:jwt')    // editar os dados
 
-Route.get('/questao', 'QuestaoController.index')
-Route.post('/questao', 'QuestaoController.store')
+Route.get('/questao', 'QuestaoController.index').middleware('auth:jwt')
+Route.post('/questao', 'QuestaoController.store').middleware('auth:jwt')
+Route.put('/questao/:id', 'QuestaoController.update').middleware('auth:jwt')
 
-Route.get('/ranking', 'RankingController.index')
-Route.post('/ranking', 'RankingController.store')
+Route.get('/ranking', 'RankingController.index').middleware('auth:jwt')
+Route.post('/ranking', 'RankingController.store').middleware('auth:jwt')
+Route.put('/ranking/:id','RankingController.update').middleware('auth:jwt')
+
+
+
+Route.post('/login','UserController.login')

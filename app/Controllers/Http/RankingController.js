@@ -92,7 +92,21 @@ class RankingController {
    * @param {Request} ctx.request
    * @param {Response} ctx.response
    */
-  async update ({ params, request, response }) {
+  async update ({ request, response, params  }) {
+    const ranking = await Ranking.findOrFail(params.id) // editar os dados
+        const data = request.only([                   // pegar os dados para editar
+          "pontos",
+          "user_id",
+          "questaos_id",
+        
+
+        ])
+
+        ranking.merge(data)   //compara os dados que foram editados
+        await ranking.save()  // salvando os dados editados
+        return ranking        // retornando os dados editados
+
+    
   }
 
   /**
@@ -104,7 +118,8 @@ class RankingController {
    * @param {Response} ctx.response
    */
   async destroy ({ params, request, response }) {
-  }
-}
 
+  }
+
+}
 module.exports = RankingController
