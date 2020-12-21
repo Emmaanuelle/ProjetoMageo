@@ -3,9 +3,9 @@
 /** @type {import('@adonisjs/lucid/src/Schema')} */
 const Schema = use('Schema')
 
-class QuestaoSchema extends Schema {
+class QuestionSchema extends Schema {
   up () {
-    this.create('questoes', (table) => {
+    this.create('questions', (table) => {
       table.increments()
       table.string('pergunta').notNullable()
       table.string('resposta').notNullable() 
@@ -14,13 +14,12 @@ class QuestaoSchema extends Schema {
       table.string('dificuldade_nivel').notNullable() 
     
       table.timestamps()
-     
     })
   }
 
   down () {
-    this.drop('questoes') 
+    this.drop('questions')
   }
 }
 
-module.exports = QuestaoSchema
+module.exports = QuestionSchema

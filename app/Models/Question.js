@@ -3,8 +3,8 @@
 /** @type {typeof import('@adonisjs/lucid/src/Lucid/Model')} */
 const Model = use('Model')
 
-class Questao extends Model {
-    rankin(){
+class Question extends Model {
+    ranking(){
         return this.hasOne('App/Models/Ranking')
     }
     user(){
@@ -12,5 +12,4 @@ class Questao extends Model {
     }
 }
 
-module.exports = Questao
-
+module.exports = Question
