@@ -8,10 +8,12 @@ class QuestionSchema extends Schema {
     this.create('questions', (table) => {
       table.increments()
       table.string('pergunta').notNullable()
+      table.string('imagem').notNullable()
+      table.string('video').notNullable()
+      table.string('Alternativas').notNullable()
       table.string('resposta').notNullable() 
       table.string('dica').notNullable() 
-      table.string('tipo').notNullable() 
-      table.string('dificuldade_nivel').notNullable() 
+      
     
       table.timestamps()
     })

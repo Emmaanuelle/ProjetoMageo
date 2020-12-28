@@ -9,10 +9,12 @@ class QuestionController {
     async store({ request, response }) {
         const data = request.only([
             "pergunta",
+            "imagem",
+            "video",
+            "alternativa",
             "resposta",
             "dica",
-            "tipo",
-            "dificuldade_nivel",
+           
         ])
         const questao = await Questao.create(data)
         return questao
@@ -22,10 +24,12 @@ class QuestionController {
         const questao = await Questao.findOrFail(params.id) // editar os dados
         const data = request.only([                   // pegar os dados para editar
           "pergunta",
+          "imagem",
+          "video",
+          "alternativas",
           "resposta",
           "dica",
-          "tipo",
-          "dificuldade_nivel",
+         
     
         ])
     
