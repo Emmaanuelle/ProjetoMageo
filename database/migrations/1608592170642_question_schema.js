@@ -9,7 +9,7 @@ class QuestionSchema extends Schema {
       table.increments()
       table.string('pergunta').notNullable()
       table.string('imagem').notNullable()
-      table.string('video').notNullable()
+      table.text('video').notNullable()
       table.string('Alternativas').notNullable()
       table.string('resposta').notNullable() 
       table.string('dica').notNullable() 
