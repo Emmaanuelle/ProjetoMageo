@@ -26,7 +26,7 @@ class QuestionController {
           "pergunta",
           "imagem",
           "video",
-          "alternativas",
+          "alternativa",
           "resposta",
           "dica",
          
