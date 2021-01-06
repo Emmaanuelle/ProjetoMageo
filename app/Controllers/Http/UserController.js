@@ -1,6 +1,9 @@
 'use strict'
 const User = use('App/Models/User');
-const Database = use('Database');
+//const Database = use('Database');
+// Validador de Senha
+var passwordValidator = require('password-validator');
+var schema = new passwordValidator();
 
 class UserController {
     async index({ request, response, view }) {  // visualizar todos os usiarios cadastrados no banco
@@ -27,7 +30,26 @@ class UserController {
                     .status(400)
                     .send({ message: { error: 'Usuário já cadastrado' } })
             }
-
+            //Verifica se o nome contem números
+            if(/\d/.test(data.nome)){
+                return response
+                .status(400)
+                .send({ message: { error: 'Nome não pode conter números' } })
+              }
+            schema
+            .is().min(8)                                    // Minimum length 8
+            .is().max(100)                                  // Maximum length 100
+            .has().uppercase([1])                           // Must have uppercase letters
+            .has().lowercase()                              // Must have lowercase letters
+            .has().digits(2)                                // Must have at least 2 digits
+            .has().symbols([1])	
+            .has().not().spaces()                           // Should not have spaces
+            .is().not().oneOf(['Passw0rd', 'Password123','12345','senha']); // Blacklist these values
+            if(!schema.validate(data.password)){
+              return response
+              .status(400)
+              .send({ message: { error: 'Senha Fraca, deve ter no mínimo 8 caracteres tem que ter no mínimo 1 letra Maiuscula Dois Digitos Sem espaço' } })
+            }   
             const user = await User.create(data)     //criando os dados que estão atribuidos na variavel data
             return user                              // retornando os dados criados
         } catch (erro) {
