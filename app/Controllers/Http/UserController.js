@@ -28,7 +28,7 @@ class UserController {
             if (userExists) {
                 return response
                     .status(400)
-                    .send({ message: { error: 'Usuário já cadastrado' } })
+                    .send({ message: { error: 'Email Cadastrado' } })
             }
             //Verifica se o nome contem números
             if(/\d/.test(data.nome)){
@@ -36,7 +36,7 @@ class UserController {
                 .status(400)
                 .send({ message: { error: 'Nome não pode conter números' } })
               }
-              
+
               if(/\d/.test(data.sobrenome)){ //verificando se o sobrenome contem números
                 return response
                 .status(400)
