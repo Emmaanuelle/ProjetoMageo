@@ -36,6 +36,13 @@ class UserController {
                 .status(400)
                 .send({ message: { error: 'Nome não pode conter números' } })
               }
+              
+              if(/\d/.test(data.sobrenome)){ //verificando se o sobrenome contem números
+                return response
+                .status(400)
+                .send({ message: { error: 'Sobrenome não pode conter números' } })
+              }
+
             schema
             .is().min(8)                                    // a senha deve ter no minimo 8 caracteres
             .is().max(100)                                  // a senha deve ter no minimo 100 caracteres 
