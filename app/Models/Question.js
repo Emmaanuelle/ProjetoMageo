@@ -5,10 +5,10 @@ const Model = use('Model')
 
 class Question extends Model {
     ranking(){
-        return this.hasOne('App/Models/Ranking')
+        return this.hasOne('App/Models/Ranking')// relacionanmento de questão com ranking
     }
     user(){
-        return this.hasOne('App/Models/User')
+        return this.hasOne('App/Models/User')// relacionameto de questão com o usuario
     }
 }
 
