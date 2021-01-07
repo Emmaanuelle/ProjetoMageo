@@ -13,6 +13,7 @@ class QuestionSchema extends Schema {
       table.string('alternativa').notNullable()
       table.string('resposta').notNullable() 
       table.string('dica').notNullable() 
+      table.string('fase').notNullable()
       
     
       table.timestamps()

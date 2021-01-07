@@ -14,6 +14,7 @@ class QuestionController {
             "alternativa",
             "resposta",
             "dica",
+            "fase",
            
         ])
         const questao = await Questao.create(data)
@@ -29,6 +30,8 @@ class QuestionController {
           "alternativa",
           "resposta",
           "dica",
+          "fase",
+        
          
     
         ])

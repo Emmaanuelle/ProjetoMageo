@@ -50,7 +50,7 @@ class RankingController {
     const data = request.only([
       "pontos",
       "user_id",
-      "questoes_id",
+      //"questoes_id",
     
 
   ])
@@ -97,7 +97,7 @@ class RankingController {
         const data = request.only([                   // pegar os dados para editar
           "pontos",
           "user_id",
-          "questoes_id",
+          //"questoes_id",
 
         ])
 

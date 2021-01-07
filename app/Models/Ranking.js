@@ -7,9 +7,9 @@ class Ranking extends Model {
     user() {
         return this.belongsTo('App/Models/User')
     }
-    questao() {
-        return this.belongsTo('App/Models/Question')
-    }
+    //questao() {
+       // return this.belongsTo('App/Models/Question')
+    //}
 }
 
 module.exports = Ranking
