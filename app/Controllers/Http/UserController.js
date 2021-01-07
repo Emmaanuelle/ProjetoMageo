@@ -96,14 +96,24 @@ class UserController {
         }
 
     }
-
-    async login({ request, auth }) {
-
+    async login({ request, auth, response }) {
+        
         const { email, senha } = request.all();
+         // Procurando no banco de dados
+         const userExists = await User.findBy('email', email)
+
+         // se o usuário não existe, não salva
+         if (!userExists) {
+             return response
+                 .status(400)
+                 .send({ message: { error: 'Email Não Cadastrado' } })
+         }
         const token = await auth.attempt(email, senha);
         return token;
 
     }
+
+    
     async perfil({ request }) {
         try {
             const user = await User.findByOrFail('email', request.header('email'))
