@@ -19,7 +19,7 @@ class UserController {
                 "sobrenome",
                 "email",
                 "senha",
-                "idade",
+                "dataNascimento",
             ])
             // Procurando no banco de dados
             const userExists = await User.findBy('email', data.email)
@@ -57,6 +57,14 @@ class UserController {
               .status(400)
               .send({ message: { error: 'Senha Fraca, deve ter no mínimo 8 caracteres tem que ter no mínimo 1 letra Maiuscula, Dois Digitos, Sem espaço, 1 caracter especial' } })
             }   
+            //Verificando a data de nascimento
+            const dataAtual = new Date()// Pegando a data atual
+            const dataNascimento = new Date(data.dataNascimento) //convertendo a dataNascimento para o tipo Date
+            if(dataNascimento >=dataAtual){//Verificando se a data de nascimento é maior ou igual ao dia de hoje
+                return response
+              .status(400)
+              .send({ message: { error: 'Data inválida' } })  
+            }
             const user = await User.create(data)     //criando os dados que estão atribuidos na variavel data
             return user                              // retornando os dados criados
         } catch (erro) {
@@ -74,7 +82,7 @@ class UserController {
                 "sobrenome",
                 "email",
                 "senha",
-                "idade",
+                "dataNascimento",
 
             ])
 

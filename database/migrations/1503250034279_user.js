@@ -11,7 +11,7 @@ class UserSchema extends Schema {
       table.string('sobrenome').notNullable()
       table.string('email').notNullable().unique()
       table.string('senha').notNullable()
-      table.integer('idade').notNullable()
+      table.date('dataNascimento').notNullable()
       table.timestamps()
     })
   }
