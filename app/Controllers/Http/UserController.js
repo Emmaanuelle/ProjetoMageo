@@ -20,6 +20,8 @@ class UserController {
                 "email",
                 "senha",
                 "dataNascimento",
+                "escola",
+                "ano_escolar",
             ])
             // Procurando no banco de dados
             const userExists = await User.findBy('email', data.email)
@@ -83,6 +85,8 @@ class UserController {
                 "email",
                 "senha",
                 "dataNascimento",
+                "escola",
+                "ano_escolar",
 
             ])
 

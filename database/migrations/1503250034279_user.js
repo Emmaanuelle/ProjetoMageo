@@ -12,6 +12,8 @@ class UserSchema extends Schema {
       table.string('email').notNullable().unique()
       table.string('senha').notNullable()
       table.date('dataNascimento').notNullable()
+      table.string('escola').notNullable()
+      table.string('ano_escolar').notNullable()
       table.timestamps()
     })
   }
