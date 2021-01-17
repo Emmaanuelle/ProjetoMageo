@@ -78,7 +78,7 @@ class UserController {
     // editar os dados
     async update({ request, response, params }) {
         try {
-            const user = await User.findByOrFail('email', request.header('email'))
+            const user = await User.findOrFail(params.id)
             const data = request.only([                   // pegar os dados para editar
                 "nome",
                 "sobrenome",
