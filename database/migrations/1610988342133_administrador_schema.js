@@ -11,7 +11,6 @@ class AdministradorSchema extends Schema {
       table.string('sobrenome_administrador').notNullable()
       table.string('email').notNullable()
       table.string('senha').notNullable()
-      
       table.timestamps()
     })
   }
