@@ -75,6 +75,16 @@ module.exports = {
       secret: Env.get('APP_KEY')
     }
   },
+  admin: {
+    serializer: 'lucid',
+    model: 'App/Models/Administrador',
+    scheme: 'jwt',
+    uid: 'email',
+    password: 'senha',
+    options: {
+      secret: Env.get('APP_KEY')+'admin'
+    }
+  },
 
   /*
   |--------------------------------------------------------------------------
