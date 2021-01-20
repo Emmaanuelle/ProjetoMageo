@@ -20,7 +20,7 @@ Route.get('/user', 'UserController.index').middleware('auth:admin')             
 Route.post('/user', 'UserController.store')                              // cadastro, envio dos dados
 Route.put('/user/:id','UserController.update').middleware('auth:jwt')    // editar os dados
 
-Route.get('/questao', 'QuestionController.index').middleware('auth:jwt')
+Route.get('/questao', 'QuestionController.index').middleware('auth:jwt,auth:admin')
 Route.post('/questao', 'QuestionController.store').middleware('auth:admin')
 Route.put('/questao/:id', 'QuestionController.update').middleware('auth:admin')
 
