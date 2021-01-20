@@ -142,22 +142,22 @@ class AdministradorController {
   async destroy({ params, request, response }) {
   }
   async login({ request, auth, response }) {
-        
-    const { email, senha } = request.all();
-     // Procurando no banco de dados
-     const userExists = await Admin.findBy('email', email)
 
-     // se o usuário não existe, não salva
-     if (!userExists) {
-         return response
-             .status(400)
-             .send({ message: { error: 'Email Não Cadastrado' } })
-     }
-     const adminAuth = auth.authenticator("admin");
-      const token = await adminAuth.attempt(email, senha);
+    const { email, senha } = request.all();
+    // Procurando no banco de dados
+    const userExists = await Admin.findBy('email', email)
+
+    // se o usuário não existe, não salva
+    if (!userExists) {
+      return response
+        .status(400)
+        .send({ message: { error: 'Email Não Cadastrado' } })
+    }
+    const adminAuth = auth.authenticator("admin");
+    const token = await adminAuth.attempt(email, senha);
     return token;
 
-}
+  }
 }
 
 module.exports = AdministradorController

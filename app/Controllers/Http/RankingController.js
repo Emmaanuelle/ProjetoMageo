@@ -21,7 +21,10 @@ class RankingController {
    * @param {View} ctx.view
    */
   async index ({ request, response, view }) {
-    const ranking = await Ranking.all()
+    //const ranking = await Ranking.all()
+    const ranking = await Database.select('*').from('users').innerJoin('rankings',function(){
+      this.on('users.id','rankings.user_id')
+    })
         return ranking   
     }
   

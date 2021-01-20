@@ -1,6 +1,6 @@
 'use strict'
 const User = use('App/Models/User');
-//const Database = use('Database');
+const Database = use('Database');
 // Validador de Senha
 var passwordValidator = require('password-validator');
 var schema = new passwordValidator();
@@ -120,7 +120,10 @@ class UserController {
     
     async perfil({ request }) {
         try {
-            const user = await User.findByOrFail('email', request.header('email'))
+            const email =  await User.findByOrFail('email', request.header('email'))
+             const user = await Database.select('*').from('users').innerJoin('rankings',function(){
+                this.on('users.id','rankings.user_id')
+              }).where('email',email.email)
             return user;
         } catch (error) {
             return response
