@@ -8,11 +8,11 @@ class QuestionSchema extends Schema {
     this.create('questions', (table) => {
       table.increments()
       table.text('pergunta').notNullable()
-      table.text('imagem')
       table.text('video')
       table.text('alternativa').notNullable()
       table.string('resposta').notNullable() 
-      table.string('dica').notNullable() 
+      table.string('dica').notNullable()
+      table.string('nivel') 
       table.string('fase').notNullable()
      // table.integer('administradors_id').references('id').inTable('administradors').onUpdate('CASCADE').onDelete('CASCADE')
       

@@ -129,7 +129,29 @@ class AdministradorController {
    * @param {Response} ctx.response
    */
   async update({ params, request, response }) {
+    try {
+      const admin = await Admin.findOrFail(params.id)
+      const data = request.only([                   // pegar os dados para editar
+        'nome_administrador',
+        'sobrenome_administrador',
+        "email",
+        "senha",
+      ])
+
+      await admin.merge(data)   //compara os dados que foram editados
+      await admin.save()  // salvando os dados editados
+      return admin      // retornando os dados editados            
+  } catch (error) {
+      return response
+          .status(404)
+          .send({ message: "Usuário não encontrado" })
   }
+
+}
+
+
+
+  
 
   /**
    * Delete a admin with id.
@@ -158,6 +180,23 @@ class AdministradorController {
     return token;
 
   }
+  async perfilAdmin({ request }) {
+    try {
+        // const email =  await User.findByOrFail('email', request.header('email'))
+        //  const user = await Database.select('*').from('users').innerJoin('rankings',function(){
+        //     this.on('users.id','rankings.user_id')
+        //   }).where('email',email.email)
+        const admin =  await Admin.findByOrFail('email', request.header('email'))
+        return admin;
+    } catch (error) {
+        return response
+            .status(404)
+            .send({ message: "Usuário não encontrado" })
+    }
+
+
+
+}
 }
 
 module.exports = AdministradorController
