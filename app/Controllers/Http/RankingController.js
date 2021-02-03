@@ -20,13 +20,15 @@ class RankingController {
    * @param {Response} ctx.response
    * @param {View} ctx.view
    */
-  async index ({ request, response, view }) {
-    //const ranking = await Ranking.all()
-    const ranking = await Database.select('*').from('users').innerJoin('rankings',function(){
-      this.on('users.id','rankings.user_id')
-    })
-        return ranking   
-    }
+  
+    async index ({ request, response, view }) {
+      //const ranking = await Ranking.all()
+      const ranking = await Database.select('*').from('users').innerJoin('rankings',function(){
+        this.on('users.id','rankings.user_id')
+      }).orderBy('rankings.pontos', 'desc')
+          return ranking   
+      }
+  
   
 
   /**
