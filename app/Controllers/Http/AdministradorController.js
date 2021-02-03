@@ -197,6 +197,13 @@ class AdministradorController {
 
 
 }
+async show ({ params }) {
+  const admin = await Admin.findOrFail(params.id)
+
+  await admin.load('question')
+
+  return admin
+}
 }
 
 module.exports = AdministradorController

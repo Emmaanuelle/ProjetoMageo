@@ -36,9 +36,10 @@ class Administrador extends Model {
       tokens () {
         return this.hasMany('App/Models/Token')
       }
-    //question(){
-       // return this.hasMany('App/Models/Question')
-    //}
+
+      question(){
+          return this.hasMany('App/Models/Question')
+        }
 }
 
 module.exports = Administrador

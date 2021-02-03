@@ -14,7 +14,9 @@ class QuestionController {
             "resposta",
             "dica",
             "fase",
-            "nivel"
+            "nivel",
+            "administradors_id"
+
            
         ])
         const questao = await Questao.create(data)
@@ -30,7 +32,9 @@ class QuestionController {
           "resposta",
           "dica",
           "fase",
-          "nivel"
+          "nivel",
+          "administradors_id"
+
         
          
     
@@ -39,6 +43,15 @@ class QuestionController {
         questao.merge(data)   //compara os dados que foram editados
         await questao.save()  // salvando os dados editados
         return questao        // retornando os dados editados
+      }
+      async destroy ({ params, auth, response }) {
+        const questao = await Questao.findOrFail(params.id)
+      
+        if (questao.adm_id !== auth.admin.id) {
+          return response.status(401).send({ error: 'Not authorized' })
+        }
+      
+        await questao.delete()
       }
 }
 

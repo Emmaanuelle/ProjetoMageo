@@ -9,7 +9,10 @@ class Question extends Model {
     //}
     user(){
         return this.hasOne('App/Models/User')// relacionameto de questão com o usuario
+
     }
+   admin(){
+     return this.hasOne('App/Models/Administrador')} 
 }
 
 module.exports = Question

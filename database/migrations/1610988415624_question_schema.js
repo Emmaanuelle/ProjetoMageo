@@ -14,7 +14,7 @@ class QuestionSchema extends Schema {
       table.string('dica').notNullable()
       table.string('nivel') 
       table.string('fase').notNullable()
-     // table.integer('administradors_id').references('id').inTable('administradors').onUpdate('CASCADE').onDelete('CASCADE')
+      table.integer('administradors_id').references('id').inTable('administradors').onUpdate('CASCADE').onDelete('CASCADE')
       
       table.timestamps()
     })
