@@ -27,6 +27,7 @@ Route.post('/login','UserController.login')
 Route.get('/perfil', 'UserController.perfil').middleware('auth:jwt')
 /* Rotas para criar, editar e atualiza do usuario professor */
 Route.get('/admin', 'AdministradorController.index').middleware('auth:admin')                           // rota de listagem dos usuarios com o /user, class usercontroller, index listagem dos dados
+Route.get('/admin/:id', 'AdministradorController.show').middleware('auth:admin')                           // rota de listagem dos usuarios com o /user, class usercontroller, index listagem dos dados
 Route.post('/admin','AdministradorController.store')  // cadastro, envio dos dados
 Route.put('/admin/:id','AdministradorController.update').middleware('auth:admin') 
 /* rota do login usuario professor */
