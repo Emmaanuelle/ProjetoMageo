@@ -184,7 +184,8 @@ class AdministradorController {
   }
   async perfilAdmin({ request }) {
     try {
-      const admin = await Admin.findByOrFail('email', request.header('email'))
+      const admin = await Admin.findByOrFail('email', request.header('email'));
+      await admin.load("question")
       return admin;
     } catch (error) {
       return response

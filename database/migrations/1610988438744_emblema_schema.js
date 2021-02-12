@@ -9,6 +9,8 @@ class EmblemaSchema extends Schema {
       table.increments()
       table.string('nome_emblema').notNullable()
       table.string('fase_emblema').notNullable()
+      table.string('etapa_desafio').notNullable()
+      table.integer('user_id').references('id').inTable('users').onUpdate('CASCADE').onDelete('CASCADE') //chave estrageira
       table.timestamps()
     })
   }

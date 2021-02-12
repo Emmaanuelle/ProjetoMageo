@@ -39,6 +39,46 @@ Route.get('/questao', 'QuestionController.index').middleware('auth:jwt,auth:admi
 Route.post('/questao', 'QuestionController.store').middleware('auth:admin')
 Route.put('/questao/:id', 'QuestionController.update').middleware('auth:admin')
 Route.delete('/questao/:id', 'QuestionController.destroy').middleware('auth:admin')
+
+/* rota para questão desafio */
+Route.get("/desafio", 'QuestionController.desafio').middleware('auth:jwt,auth:admin')
+
+/*  Rota desafio quadrado */
+Route.get("/desafioQuadrado", 'FaseQuadradoController.desafio').middleware('auth:jwt,auth:admin')
+/* Rota desafio Retangulo */
+Route.get("/desafioRetangulo", 'FaseRetanguloController.desafio').middleware('auth:jwt,auth:admin')
+/* Rota desafio Triangulo */
+Route.get("/desafioTriangulo", 'FaseTrianguloController.desafio').middleware('auth:jwt,auth:admin')
+/* Rota Desafio Circulo */
+Route.get("/desafioCirculo", 'FaseCirculoController.desafio').middleware('auth:jwt,auth:admin')
+
+/* rota das fase Quadrado */
+Route.get("/faseQuadrado","FaseQuadradoController.index").middleware('auth:jwt,auth:admin')
+/* Route.post('/faseQuadrado', 'FaseQuadradoController.store').middleware('auth:admin')
+Route.put('/faseQuadrado/:id', 'FaseQuadradoController.update').middleware('auth:admin')
+Route.delete('/faseQuadrado/:id', 'FaseQuadradoController.destroy').middleware('auth:admin') */
+
+/* rota das fase Retangulo */
+Route.get("/faseRetangulo","FaseRetanguloController.index").middleware('auth:jwt,auth:admin')
+/* Route.post('/faseRetangulo', 'FaseRetanguloController.store').middleware('auth:admin')
+Route.put('/faseRetangulo/:id', 'FaseRetanguloController.update').middleware('auth:admin')
+Route.delete('/faseRetangulo/:id', 'FaseRetanguloController.destroy').middleware('auth:admin') */
+
+/* rota das fase Triangulo */
+Route.get("/faseTriangulo","FaseTrianguloController.index").middleware('auth:jwt,auth:admin')
+/* Route.post('/faseTriangulo', 'FaseTrianguloController.store').middleware('auth:admin')
+Route.put('/faseTriangulo/:id', 'FaseTrianguloController.update').middleware('auth:admin')
+Route.delete('/faseTriangulo/:id', 'FaseTrianguloController.destroy').middleware('auth:admin')
+ */
+/* rota das fase Circulo */
+Route.get("/faseCirculo","FaseCirculoController.index").middleware('auth:jwt,auth:admin')
+/* Route.post('/faseCirculo', 'FaseCirculoController.store').middleware('auth:admin')
+Route.put('/faseCirculo/:id', 'FaseCirculoController.update').middleware('auth:admin')
+Route.delete('/faseCirculo/:id', 'FaseCirculoController.destroy').middleware('auth:admin')
+ */
+
+
+
 /* rota para criar, editar, atualizar o ranking */
 Route.get('/ranking', 'RankingController.index').middleware('auth:jwt,auth:admin')
 Route.post('/ranking', 'RankingController.store').middleware('auth:jwt')

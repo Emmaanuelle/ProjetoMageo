@@ -1,10 +1,30 @@
 'use strict'
 const Questao = use('App/Models/Question');
+const Database = use("Database")
 
 class QuestionController {
     async index({ request, response, view }) {
-        const questao = await Questao.all()
-        return questao
+  
+        const questao = await Database.from("questions").where(function () {
+          this
+            .where('nivel',"facil")
+            .orWhere('nivel',"medio")
+            .orWhere('nivel',"dificil")
+           
+          
+        }). orderBy('nivel', 'facil','medio','dificil')
+
+
+        return questao;
+       
+    }
+    async desafio({ request, response, view }){
+      const questao = await Database.from("questions").where(function () {
+        this
+          .where('nivel',"desafio")
+         
+      })
+      return questao;
     }
     async store({ request, response }) {
         const data = request.only([
