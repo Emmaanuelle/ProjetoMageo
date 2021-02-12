@@ -72,7 +72,10 @@ module.exports = {
     uid: 'email',
     password: 'senha',
     options: {
-      secret: Env.get('APP_KEY')
+      secret: Env.get('APP_KEY'),
+      expiresIn:"72000000",// tempo em ms
+      //expiresIn:"60000"
+      
     }
   },
   admin: {
@@ -82,7 +85,8 @@ module.exports = {
     uid: 'email',
     password: 'senha',
     options: {
-      secret: Env.get('APP_KEY')+'admin'
+      secret: Env.get('APP_KEY')+'admin',
+      expiresIn:"72000000"// tempo em ms
     }
   },
 

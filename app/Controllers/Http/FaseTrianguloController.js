@@ -8,6 +8,7 @@ class FaseTrianguloController {
         const questao = await Database.from("questions").where(function () {
           this
           .where('fase',"triangulo")
+          .whereNot('nivel','desafio')
             
         })
         return questao;

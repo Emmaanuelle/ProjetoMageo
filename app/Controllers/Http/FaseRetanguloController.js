@@ -8,6 +8,7 @@ class FaseRetanguloController {
         const faseRetangulo = await Database.from("questions").where(function () {
           this
           .where('fase',"retangulo")
+          .whereNot('nivel','desafio')
            
           
         });
