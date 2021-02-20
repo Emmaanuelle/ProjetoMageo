@@ -14,6 +14,8 @@ class UserSchema extends Schema {
       table.date('dataNascimento').notNullable()
       table.string('escola').notNullable()
       table.string('ano_escolar').notNullable()
+      table.string('token')
+      table.timestamp('token_created_at')
       table.timestamps()
     })
   }

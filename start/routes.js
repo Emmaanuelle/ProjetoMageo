@@ -85,5 +85,6 @@ Route.post('/ranking', 'RankingController.store').middleware('auth:jwt')
 Route.put('/ranking/:id','RankingController.update').middleware('auth:admin')
 /*  */
 
-
-
+/* Rota para esqueci a senha */
+Route.post('passwords', 'EsqueciSenhaController.store')
+Route.put('redefinirSenha/:token', 'EsqueciSenhaController.update')
