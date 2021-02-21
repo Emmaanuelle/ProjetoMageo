@@ -1,48 +1,77 @@
 'use strict'
 
+const nodemailer = require('nodemailer');
 const crypto = require('crypto')
 const moment = require('moment')
 const User = use('App/Models/User')
 const Mail = use('Mail')
 const Env = use('Env')
 
+const transport = nodemailer.createTransport({
+  host: Env.get('MAIL_HOST'),
+  port: Env.get('MAIL_PORT'),
+  auth: {
+      user: Env.get('MAIL_USERNAME'),
+      pass: Env.get('MAIL_PASSWORD'),
+  }
+});
 class EsqueciSenhaController {
   async store ({ request, response }) {
     try {
-      // retrieving email sent in request
+      // Solicitando o email para o Usuário
       const { email } = request.only(['email'])
 
-      // checking if email is registered
+      //Verficando se o email existe
       const user = await User.findByOrFail('email', email)
 
-      // registering the token
-      user.token = crypto.randomBytes(10).toString('hex') // random token
-      user.token_created_at = new Date() // date of when token was created
+      // Registrando um novo token
+      user.token = crypto.randomBytes(10).toString('hex') // gerando um token aleatório
+      user.token_created_at = new Date() // data de quando o token foi criado.
 
-      await user.save() // saves token to the user
+      await user.save() // Salvando o token para o usuário
 
-      // script to send email
-      /**
-       * .send() method requires a few parameters
-       * @param {string} email template Address of template to serve the email inside resources/views
-       * @param {Object} variables to be sent to the template
-       * @param {Function} message set parameters like sender and receiver
-       */
-      await Mail.send(
-        'emails.forgotpass',
-        { email, link: `http://127.0.0.1:3000/criarNovaSenha/${user.token}` },
-        message => {
-          message.from(Env.get('MAIL_USERNAME'))
-          message.to(email)
-          message.subject('Esqueceu a Senha')
+      const app_url =  Env.get('FRONT_URL');// Variável de ambiente para o endereço do frontend
+      
+      // Realizando o envio de email
+     await transport.sendMail({
+        to: email,
+        from: Env.get('MAIL_USERNAME'),
+        html: `
+        <strong>Recuperação de senha</strong>
+        <p>
+        parece que você fez uma requisição de redefinir a senha com o email: 
+        </p>
+        <p>
+            ${email}
+        </p>
+        <a href=${app_url}/criarNovaSenha/${user.token}>Clique para Criar uma nova senha</a>
+        <p>Atenciosamente,</p>
+        <p>MageoQuiz</p>
+        <p>Emanuelle Fereira</p>
+        `,
+        subject:"Recuperação de senha - Mageo ",
+    }, (err) => {
+        if (err) {
+            console.log(err);
+            return response.status(400).send({ error: { message: "Erro ao enviar o email" } })
         }
-      )
+        return response.status(200).send({message:'Email enviado com sucesso'})
+    })
+      // await Mail.send(
+      //   'emails.forgotpass',
+      //   { email, link: `http://127.0.0.1:3000/criarNovaSenha/${user.token}` },
+      //   message => {
+      //     message.from(Env.get('MAIL_USERNAME'))
+      //     message.to(email)
+      //     message.subject('Esqueceu a Senha')
+      //   }
+      // )
     } catch (err) {
         console.log(err)
       return response.status(err.status).send({
         error: {
           message:
-            'Something went wrong. This email does not seem to be from a valid user'
+            'Algo deu errado. Este email não é válido'
         }
       })
     }
@@ -50,44 +79,43 @@ class EsqueciSenhaController {
 
   async update ({ request, response, params }) {
     try {
-      const { senha } = request.all() // recovering email from request
+      const { senha } = request.all() // Solicitando a senha para que seja alterada
       const { token } = params
 
-      const user = await User.findByOrFail('token', token) // looking for user that matches the token provided
+      const user = await User.findByOrFail('token', token) // verificando se o token gerado é do usuário mesmo.
 
-      // checking if token is expired
+      // verificando se o token expirou
       const tokenExpired = moment()
         /**
-         * gets the exact moment the request is happening and checks
-         * and subtract 2 days from it as 2 days is the token's duration
+         * pegando o exato momento da requisição do token e verificando
+         * e subtraindo 1 dia para que o token possa estar valido
          */
-        .subtract(2, 'days')
+        .subtract(1, 'days')
         /**
-         * checks if NOW is already past to days from the day the token
-         * was generated
+         * verificando se o dia atual é válido para o token
          */
         .isAfter(user.token_created_at)
 
-      // if token is expired returns an error
+      // Se o token expirou, retorna um erro
       if (tokenExpired) {
         return response.status(401).send({
           error: {
             message:
-              'Your token is expired, please request a new password reset'
+              'Seu token expirou, por favor solicite um novo'
           }
         })
       }
 
-      // if token is valid then proceeds
-      user.token = null // destroy current token
-      user.token_created_at = null // reset token expiry date
-      user.senha = senha // sets new password
+      // se o token é válido
+      user.token = null // apaga o token atual
+      user.token_created_at = null // apaga o dia do token gerado
+      user.senha = senha // troca a senha
 
       await user.save()
     } catch (err) {
       return response.status(err.status).send({
         error: {
-          message: 'Something went wrong. This token seems invalid for you'
+          message: 'Algo deu errado, o token está inválido.'
         }
       })
     }
