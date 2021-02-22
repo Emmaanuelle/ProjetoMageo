@@ -96,11 +96,7 @@ class EsqueciSenhaAdminController {
 				margin: 0 auto;
 			}
 
-			img.fullwidth,
-			img.fullwidthOnMobile {
-				max-width: 100% !important;
-			}
-
+			
 			.no-stack .col {
 				min-width: 0 !important;
 				display: table-cell !important;
@@ -235,13 +231,8 @@ class EsqueciSenhaAdminController {
 									<div class="col_cont" style="width:100% !important;">
 										<div
 											style="border-top:0px solid transparent; border-left:0px solid transparent; border-bottom:0px solid transparent; border-right:0px solid transparent; padding-top:0px; padding-bottom:0px; padding-right: 0px; padding-left: 0px;">
-											<div align="center" class="img-container center autowidth"
-												style="padding-right: 0px;padding-left: 0px;">
-												<div style="font-size:1px;line-height:22px"> </div><img align="center"
-													alt="I'm an image" border="0" class="center autowidth"
-													src="images/Companify-Logo.png"
-													style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 149px; display: block;"
-													title="I'm an image" width="149" />
+											<div style="padding-right: 0px;padding-left: 0px;">
+												<div style="font-size:1px;line-height:22px"> </div>
 												<div style="font-size:1px;line-height:25px"> </div>
 
 											</div>
@@ -330,7 +321,7 @@ class EsqueciSenhaAdminController {
 													</tr>
 												</tbody>
 											</table>
-											<div align="center" class="img-container center fixedwidth"
+											<div 
 												style="padding-right: 40px;padding-left: 40px;">
 											</div>
 											<table border="0" cellpadding="0" cellspacing="0" class="divider"
@@ -384,11 +375,11 @@ class EsqueciSenhaAdminController {
 												<div
 													style="text-decoration:none;display:inline-block;color:#ffffff;background-color:#1aa19c;border-radius:60px;-webkit-border-radius:60px;-moz-border-radius:60px;width:auto; width:auto;;border-top:1px solid #1aa19c;border-right:1px solid #1aa19c;border-bottom:1px solid #1aa19c;border-left:1px solid #1aa19c;padding-top:15px;padding-bottom:15px;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;text-align:center;mso-border-alt:none;word-break:keep-all;">
 													<span
-														style="padding-left:30px;padding-right:30px;font-size:16px;display:inline-block;letter-spacing:undefined;"><span
+														style="padding-left:30px;padding-right:30px;font-size:16px;display:inline-block;letter-spacing:undefined;">
 														<a href='${app_url}/criarNovaSenhaAdmin/${user.token}'
 														target="_blank"
 														style="display: inline-block; padding: 16px 36px; font-size: 20px; color: #ffffff; text-decoration: none; border-radius: 6px;">Redefinir
-															Senha</a></span></span>
+															Senha</a></span>
 												</div>
 											</div>
 											<table border="0" cellpadding="0" cellspacing="0" class="divider"
@@ -497,16 +488,12 @@ class EsqueciSenhaAdminController {
 														</tr>
 													</tbody>
 												</table>
-												<div align="center" class="img-container center autowidth"
+												<div 
 													style="padding-right: 0px;padding-left: 0px;">
 												</div>
-												<div align="center" class="img-container center autowidth"
+												<div
 													style="padding-right: 0px;padding-left: 0px;">
-													<div style="font-size:1px;line-height:40px"> </div><img
-														align="center" alt="Alternate text" border="0"
-														class="center autowidth" src="images/Logo-white.png"
-														style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; width: 100%; max-width: 149px; display: block;"
-														title="Alternate text" width="149" />
+													<div style="font-size:1px;line-height:40px"> </div>
 												</div>
 												<table cellpadding="0" cellspacing="0" class="social_icons"
 													role="presentation"
@@ -527,39 +514,19 @@ class EsqueciSenhaAdminController {
 																			<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;"
 																				valign="top"><a
 																					href="https://www.facebook.com/"
-																					target="_blank"><img alt="Facebook"
-																						height="32"
-																						src="images/facebook2x.png"
-																						style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-																						title="Facebook"
-																						width="32" /></a></td>
+																					target="_blank"></a></td>
 																			<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;"
 																				valign="top"><a
 																					href="https://twitter.com/"
-																					target="_blank"><img alt="Twitter"
-																						height="32"
-																						src="images/twitter2x.png"
-																						style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-																						title="Twitter"
-																						width="32" /></a></td>
+																					target="_blank"></a></td>
 																			<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;"
 																				valign="top"><a
 																					href="https://instagram.com/"
-																					target="_blank"><img alt="Instagram"
-																						height="32"
-																						src="images/instagram2x.png"
-																						style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-																						title="Instagram"
-																						width="32" /></a></td>
+																					target="_blank"></a></td>
 																			<td style="word-break: break-word; vertical-align: top; padding-bottom: 0; padding-right: 10px; padding-left: 10px;"
 																				valign="top"><a
 																					href="https://www.linkedin.com/"
-																					target="_blank"><img alt="LinkedIn"
-																						height="32"
-																						src="images/linkedin2x.png"
-																						style="text-decoration: none; -ms-interpolation-mode: bicubic; height: auto; border: 0; display: block;"
-																						title="LinkedIn"
-																						width="32" /></a></td>
+																					target="_blank"></a></td>
 																		</tr>
 																	</tbody>
 																</table>
