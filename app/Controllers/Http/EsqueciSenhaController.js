@@ -355,7 +355,7 @@ class EsqueciSenhaController {
 													style="line-height: 1.2; font-size: 12px; color: #555555; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px;">
 													<p
 														style="font-size: 30px; line-height: 1.2; text-align: center; word-break: break-word; mso-line-height-alt: 36px; margin: 0;">
-														<span style="font-size: 30px; color: #2b303a;"><strong>Esqueceu Senha</strong></span>
+														<span style="font-size: 30px; color: #2b303a;"><strong>Recuperação de Senha</strong></span>
 													</p>
 												</div>
 											</div>
