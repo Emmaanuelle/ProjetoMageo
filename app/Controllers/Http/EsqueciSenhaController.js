@@ -540,7 +540,7 @@ class EsqueciSenhaController {
 														style="line-height: 1.5; font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 18px;">
 														<p
 															style="font-size: 12px; line-height: 1.5; word-break: break-word; text-align: left; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 18px; margin: 0;">
-															<span style="color: #95979c; font-size: 12px;">MaGeo Quiz</span>
+															<span style="color: #95979c; font-size: 12px;"></span>
 														</p>
 													</div>
 												</div>
@@ -575,7 +575,7 @@ class EsqueciSenhaController {
 														style="line-height: 1.2; font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 14px;">
 														<p
 															style="font-size: 12px; line-height: 1.2; word-break: break-word; text-align: left; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 14px; margin: 0;">
-															<span style="color: #95979c; font-size: 12px;">MaGeo Quiz
+															<span style="color: #95979c; font-size: 12px; textAlign: center">MaGeo Quiz
 																Copyright © 2021</span>
 														</p>
 													</div>
