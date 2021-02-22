@@ -3,19 +3,19 @@
 const nodemailer = require('nodemailer');
 const crypto = require('crypto')
 const moment = require('moment')
-const User = use('App/Models/User')
+const User = use('App/Models/Administrador')
 const Mail = use('Mail')
 const Env = use('Env')
 
 const transport = nodemailer.createTransport({
   host: Env.get('MAIL_HOST'),
-  port: Env.get('MAIL_PORT' ),
+  port: Env.get('MAIL_PORT'),
   auth: {
       user: Env.get('MAIL_USERNAME'),
       pass: Env.get('MAIL_PASSWORD'),
-  },
+  }
 });
-class EsqueciSenhaController {
+class EsqueciSenhaAdminController {
   async store ({ request, response }) {
     try {
       // Solicitando o email para o Usuário
@@ -45,7 +45,7 @@ class EsqueciSenhaController {
         <p>
             ${email}
         </p>
-        <a href=${app_url}/criarNovaSenha/${user.token}>Clique para Criar uma nova senha</a>
+        <a href=${app_url}/criarNovaSenhaAdmin/${user.token}>Clique para Criar uma nova senha</a>
         <p>
         Caso não tenha solicitado, por favor desconsidere esse email.
         </p>
@@ -54,7 +54,6 @@ class EsqueciSenhaController {
         <p>Emanuelle Fereira</p>
         `,
         subject:"Recuperação de senha - Mageo ",
-
     }, (err) => {
         if (err) {
             console.log(err);
@@ -127,4 +126,4 @@ class EsqueciSenhaController {
   }
 }
 
-module.exports = EsqueciSenhaController 
+module.exports = EsqueciSenhaAdminController 
