@@ -363,7 +363,7 @@ class EsqueciSenhaController {
 												style="color:#555555;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.5;padding-top:10px;padding-right:40px;padding-bottom:10px;padding-left:40px;">
 												<div class="txtTinyMce-wrapper"
 													style="line-height: 1.5; font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 18px;">
-													 <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
+													 <h2><strong>Olá ${user.nome} ${user.sobrenome}</strong></h2>
 													<p
 														style="font-size: 15px; line-height: 1.5; text-align: center; word-break: break-word; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 23px; margin: 0;">
 														<span style="color: #808389; font-size: 15px;">Clique no botão para redefinir a sua senha, caso não tenha solicitado desconsidere este email.</span>
