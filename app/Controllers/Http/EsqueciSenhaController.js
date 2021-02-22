@@ -633,7 +633,7 @@ class EsqueciSenhaController {
 	</table>
 </body>
 
-</html> 
+</html>
   `,
         subject: "Recuperação de senha - Mageo ",
 
