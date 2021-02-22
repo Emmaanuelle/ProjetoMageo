@@ -1,22 +1,21 @@
 'use strict'
 
 const nodemailer = require('nodemailer');
-const crypto = require('crypto')
-const moment = require('moment')
-const User = use('App/Models/Administrador')
-const Mail = use('Mail')
+const moment = require('moment');
+const crypto = require('crypto');
+const User = use('App/Models/Administrador');
 const Env = use('Env')
 
 const transport = nodemailer.createTransport({
   host: Env.get('MAIL_HOST'),
   port: Env.get('MAIL_PORT'),
   auth: {
-      user: Env.get('MAIL_USERNAME'),
-      pass: Env.get('MAIL_PASSWORD'),
+    user: Env.get('MAIL_USERNAME'),
+    pass: Env.get('MAIL_PASSWORD'),
   }
 });
 class EsqueciSenhaAdminController {
-  async store ({ request, response }) {
+  async store({ request, response }) {
     try {
       // Solicitando o email para o Usuário
       const { email } = request.only(['email'])
@@ -30,48 +29,41 @@ class EsqueciSenhaAdminController {
 
       await user.save() // Salvando o token para o usuário
 
-      const app_url =  Env.get('FRONT_URL');// Variável de ambiente para o endereço do frontend
-      
+      const app_url = Env.get('FRONT_URL');// Variável de ambiente para o endereço do frontend
+
       // Realizando o envio de email
-     await transport.sendMail({
+      await transport.sendMail({
         to: email,
         from: Env.get('MAIL_USERNAME'),
         html: `
-        <strong>Recuperação de senha</strong>
-        <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
-        <p>
-        Parece que você fez uma requisição de redefinir a senha com o email: 
-        </p>
-        <p>
-            ${email}
-        </p>
-        <a href=${app_url}/criarNovaSenhaAdmin/${user.token}>Clique para Criar uma nova senha</a>
-        <p>
-        Caso não tenha solicitado, por favor desconsidere esse email.
-        </p>
-        <p>Atenciosamente,</p>
-        <p>MageoQuiz</p>
-        <p>Emanuelle Fereira</p>
-        `,
-        subject:"Recuperação de senha - Mageo ",
-    }, (err) => {
+  <strong>Recuperação de senha</strong>
+  <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
+  <p>
+  Parece que você fez uma requisição de redefinir a senha com o email: 
+  </p>
+  <p>
+      ${email}
+  </p>
+  <a href='${app_url}/criarNovaSenha/${user.token}'>Clique para Criar uma nova senha</a>
+  <p>
+  Caso não tenha solicitado, por favor desconsidere esse email.
+  </p>
+  <p>Atenciosamente,</p>
+  <p>MageoQuiz</p>
+  <p>Emanuelle Fereira</p>
+  `,
+        subject: "Recuperação de senha - Mageo ",
+
+      }, (err) => {
         if (err) {
-            console.log(err);
-            return response.status(400).send({ error: { message: "Erro ao enviar o email" } })
+          console.log(err);
+          return response.status(400).send({ error: { message: "Erro ao enviar o email" } })
         }
-        return response.status(200).send({message:'Email enviado com sucesso'})
-    })
-      // await Mail.send(
-      //   'emails.forgotpass',
-      //   { email, link: `http://127.0.0.1:3000/criarNovaSenha/${user.token}` },
-      //   message => {
-      //     message.from(Env.get('MAIL_USERNAME'))
-      //     message.to(email)
-      //     message.subject('Esqueceu a Senha')
-      //   }
-      // )
+        return response.status(200).send({ message: 'Email enviado com sucesso' })
+      })
+
     } catch (err) {
-        console.log(err)
+      console.log(err)
       return response.status(err.status).send({
         error: {
           message:
@@ -81,7 +73,7 @@ class EsqueciSenhaAdminController {
     }
   }
 
-  async update ({ request, response, params }) {
+  async update({ request, response, params }) {
     try {
       const { senha } = request.all() // Solicitando a senha para que seja alterada
       const { token } = params

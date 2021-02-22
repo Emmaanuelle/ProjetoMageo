@@ -86,10 +86,10 @@ Route.put('/ranking/:id','RankingController.update').middleware('auth:admin')
 /*  */
 
 /* Rota para esqueci a senha */
-Route.post('passwords', 'EsqueciSenhaController.store')
-Route.put('redefinirSenha/:token', 'EsqueciSenhaController.update')
+Route.post('/passwords', 'EsqueciSenhaController.store')
+Route.put('/redefinirSenha/:token', 'EsqueciSenhaController.update')
 
 
 /* Rota Para esqueci a senha admin */
-Route.post('passwordsAdmin', 'EsqueciSenhaAdminController.store')
-Route.put('redefinirSenhaAdmin/:token', 'EsqueciSenhaAdminController.update')
+Route.post('/passwordsAdmin', 'EsqueciSenhaAdminController.store')
+Route.put('/redefinirSenhaAdmin/:token', 'EsqueciSenhaAdminController.update')
