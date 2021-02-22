@@ -4,7 +4,7 @@ const nodemailer = require('nodemailer');
 const crypto = require('crypto')
 const moment = require('moment')
 const User = use('App/Models/User')
-const Mail = use('Mail')
+/* const Mail = use('Mail') */
 const Env = use('Env')
 
 const transport = nodemailer.createTransport({
