@@ -363,7 +363,7 @@ class EsqueciSenhaAdminController {
 												style="color:#555555;font-family:Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif;line-height:1.5;padding-top:10px;padding-right:40px;padding-bottom:10px;padding-left:40px;">
 												<div class="txtTinyMce-wrapper"
 													style="line-height: 1.5; font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 18px;">
-													 <p><strong>Olá ${user.nome_administrador} ${user.sobrenome_administrador}</strong></p>
+													 <h2><strong>Olá ${user.nome_administrador} ${user.sobrenome_administrador}</strong></h2>
 													<p
 														style="font-size: 15px; line-height: 1.5; text-align: center; word-break: break-word; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 23px; margin: 0;">
 														<span style="color: #808389; font-size: 15px;">Clique no botão para redefinir a sua senha, caso não tenha solicitado desconsidere este email.</span>
@@ -540,7 +540,7 @@ class EsqueciSenhaAdminController {
 														style="line-height: 1.5; font-size: 12px; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; color: #555555; mso-line-height-alt: 18px;">
 														<p
 															style="font-size: 12px; line-height: 1.5; word-break: break-word; text-align: left; font-family: Montserrat, Trebuchet MS, Lucida Grande, Lucida Sans Unicode, Lucida Sans, Tahoma, sans-serif; mso-line-height-alt: 18px; margin: 0;">
-															<span style="color: #95979c; font-size: 12px;">MaGeo Quiz</span>
+															<span style="color: #95979c; font-size: 12px;"></span>
 														</p>
 													</div>
 												</div>
