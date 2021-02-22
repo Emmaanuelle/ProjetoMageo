@@ -36,21 +36,79 @@ class EsqueciSenhaAdminController {
         to: email,
         from: Env.get('MAIL_USERNAME'),
         html: `
-  <strong>Recuperação de senha</strong>
-  <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
-  <p>
-  Parece que você fez uma requisição de redefinir a senha com o email: 
-  </p>
-  <p>
-      ${email}
-  </p>
-  <a href='${app_url}/criarNovaSenha/${user.token}'>Clique para Criar uma nova senha</a>
-  <p>
-  Caso não tenha solicitado, por favor desconsidere esse email.
-  </p>
-  <p>Atenciosamente,</p>
-  <p>MageoQuiz</p>
-  <p>Emanuelle Fereira</p>
+        <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Recuperação de Senha</title>
+<style type="text/css">
+/**
+   * Collapse table borders to avoid space between cells.
+   */
+table {
+	border-collapse: collapse !important;
+}
+</style>
+
+</head>
+<body style="background-color: #e9ecef;">
+	<table style="width: 100%">
+
+		
+		<tr>
+			<td align="center" bgcolor="#e9ecef">
+				<h1 style="font-size: 32px; font-weight: 700;">Recuperação de
+					Senha</h1>
+			</td>
+		</tr>
+		<tr>
+			<td align="center" bgcolor="#e9ecef">
+				<table style="max-width: 600px; width: 100%">
+					<tr>
+						<td align="left" bgcolor="#ffffff"
+							style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
+              <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
+              <p style="margin: 0;">Clique no botão para redefinir a sua
+								senha, caso não tenha solicitado desconsidere este email.</p>
+						</td>
+					</tr>
+					<tr>
+						<td align="left" bgcolor="#ffffff">
+							<table style="width: 100%">
+								<tr>
+									<td align="center" bgcolor="#ffffff" style="padding: 12px;">
+										<table>
+											<tr>
+												<td align="center" bgcolor="#1a82e2"
+													style="border-radius: 6px;">    <a href='${app_url}/criarNovaSenha/${user.token}'
+													target="_blank"
+													style="display: inline-block; padding: 16px 36px; font-size: 20px; color: #ffffff; text-decoration: none; border-radius: 6px;">Redefinir
+														Senha</a></td>
+											</tr>
+										</table>
+									</td>
+								</tr>
+							</table>
+						</td>
+					</tr>
+					<tr>
+						<td align="left" bgcolor="#ffffff"
+							style="padding: 24px; font-size: 16px; line-height: 24px; border-bottom: 3px solid #d4dadf">
+							<p style="margin: 0;">
+              <p>Atenciosamente,</p>
+              <p>MageoQuiz</p>
+              <p>Emanuelle Fereira</p>
+							</p>
+						</td>
+					</tr>
+				</table>
+			</td>
+		</tr>
+	</table>
+</body>
+</html> 
   `,
         subject: "Recuperação de senha - Mageo ",
 
