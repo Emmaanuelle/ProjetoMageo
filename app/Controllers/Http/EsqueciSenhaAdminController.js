@@ -69,7 +69,7 @@ table {
 					<tr>
 						<td align="left" bgcolor="#ffffff"
 							style="padding: 24px; font-family: 'Source Sans Pro', Helvetica, Arial, sans-serif; font-size: 16px; line-height: 24px;">
-              <p><strong>Olá ${user.nome} ${user.sobrenome}</strong></p>
+              <p><strong>Olá ${user.nome_administrador} ${user.sobrenome_administrador}</strong></p>
               <p style="margin: 0;">Clique no botão para redefinir a sua
 								senha, caso não tenha solicitado desconsidere este email.</p>
 						</td>
@@ -82,7 +82,7 @@ table {
 										<table>
 											<tr>
 												<td align="center" bgcolor="#1a82e2"
-													style="border-radius: 6px;">    <a href='${app_url}/criarNovaSenha/${user.token}'
+													style="border-radius: 6px;">    <a href='${app_url}/criarNovaSenhaAdmin/${user.token}'
 													target="_blank"
 													style="display: inline-block; padding: 16px 36px; font-size: 20px; color: #ffffff; text-decoration: none; border-radius: 6px;">Redefinir
 														Senha</a></td>
