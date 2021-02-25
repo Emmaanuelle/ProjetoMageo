@@ -23,10 +23,15 @@ class RankingController {
   
     async index ({ request, response, view }) {
       //const ranking = await Ranking.all()
-      const ranking = await Database.select('*').from('users').innerJoin('rankings',function(){
+    /*   const ranking = await Database.select('*') */
+  
+    /*  */
+     const ranking = await Database.raw("select users.nome,users.sobrenome,users.escola,users.ano_escolar,user_id,sum(rankings.pontos) as pontos from rankings inner join users on rankings.user_id=users.id  group By users.nome,users.sobrenome,users.escola,users.ano_escolar,user_id order By pontos desc;")
+     /* select('*').from('users').sum("rankings.pontos").innerJoin('rankings',function(){
         this.on('users.id','rankings.user_id')
-      }).orderBy('rankings.pontos', 'desc')
-          return ranking   
+      }).groupBy("rankings.user_id").orderBy('rankings.pontos', 'desc') */
+          return ranking 
+         
       }
   
   
