@@ -5,9 +5,11 @@ const Model = use('Model')
 
 class Emblema extends Model {
 
-    desafio(){
-        return this.belongsToMany('App/Models/Desafio')
+    
+    user() {
+        return this.belongsTo('App/Models/User')
     }
+    
 }
 
 module.exports = Emblema

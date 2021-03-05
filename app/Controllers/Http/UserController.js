@@ -118,14 +118,14 @@ class UserController {
     }
 
     
-    async perfil({ request }) {
+    async perfil({ request, response }) {
         try {
             // const email =  await User.findByOrFail('email', request.header('email'))
             //  const user = await Database.select('*').from('users').innerJoin('rankings',function(){
             //     this.on('users.id','rankings.user_id')
             //   }).where('email',email.email)
             const user =  await User.findByOrFail('email', request.header('email'))
-            await user.load('ranking')
+            await user.loadMany(['ranking','emblema']);
             return user;
         } catch (error) {
             return response

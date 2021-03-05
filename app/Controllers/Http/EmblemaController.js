@@ -1,5 +1,8 @@
 'use strict'
 
+const Emblema = use('App/Models/Emblema');
+const Database = use('Database');
+
 /** @typedef {import('@adonisjs/framework/src/Request')} Request */
 /** @typedef {import('@adonisjs/framework/src/Response')} Response */
 /** @typedef {import('@adonisjs/framework/src/View')} View */
@@ -41,7 +44,25 @@ class EmblemaController {
    * @param {Response} ctx.response
    */
   async store ({ request, response }) {
-  }
+
+    const data = request.only([
+      "nome_emblema",
+      "fase_emblema",
+      "user_id",
+      "etapa_desafio",
+      //"questoes_id",
+    
+
+  ])
+  const emblema = await Emblema.create(data)
+  return emblema
+
+  
+}
+
+
+
+  
 
   /**
    * Display a single emblema.

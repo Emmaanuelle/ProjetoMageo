@@ -93,3 +93,6 @@ Route.put('/redefinirSenha/:token', 'EsqueciSenhaController.update')
 /* Rota Para esqueci a senha admin */
 Route.post('/passwordsAdmin', 'EsqueciSenhaAdminController.store')
 Route.put('/redefinirSenhaAdmin/:token', 'EsqueciSenhaAdminController.update')
+
+ /* criando uma rota para emblema */
+ Route.post('/Emblema', 'EmblemaController.store')
